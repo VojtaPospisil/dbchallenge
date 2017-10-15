@@ -7,7 +7,7 @@ if ($_POST) {
     
             $db = db_connect();
             $search = $db->real_escape_string($_POST['name']);
-            $stmt = $db->prepare("SELECT * FROM imdb_movie WHERE name = '%$search%' ");            
+            $stmt = $db->prepare('SELECT * FROM imdb_movie WHERE name = ?');
             $stmt->execute([$_POST['name']]);
             $result = $stmt->fetch();
             //echo $result ['name'];
