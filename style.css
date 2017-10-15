@@ -1,0 +1,27 @@
+body {
+    background-image: url(images/screen.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin: auto;
+
+}
+
+#screen {
+    border: 2px solid red;
+    text-align: center;
+    color: black;
+    margin-top: 150px;
+}
+#screen h1 {
+    font-size: 4em;
+}
+#screen p {
+    font-size: 2em;
+}
+.movies {
+    margin-top: 150px;
+    font-size: 2em;
+}
