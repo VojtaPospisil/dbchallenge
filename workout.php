@@ -1,7 +1,7 @@
 <?php
 require_once 'db.php';
 
-if ($_POST['name']) {
+if (!empty($_POST['name'])) {
 
             $db = db_connect();
             $stmt = $db->prepare("SELECT * FROM imdb_movie WHERE name LIKE ? ");
@@ -9,7 +9,7 @@ if ($_POST['name']) {
             $infos = $stmt->fetchAll();               
 }
 
-if ($_POST['year']) {
+if (!empty($_POST['year'])) {
     
                 $db = db_connect();
                 $stmt = $db->prepare("SELECT * FROM imdb_movie WHERE year = ? ");
@@ -17,18 +17,19 @@ if ($_POST['year']) {
                 $years = $stmt->fetchAll();                       
 }
 
-    if ($_POST['genre']) {
+if (!empty($_POST['genre'])) {
         
                 $db = db_connect();
                 $stmt = $db->prepare('SELECT * FROM imdb_genre WHERE name = ?');
                 $stmt->execute([$_POST['genre']]);
-                $genre = $stmt->fetchAll();
-                var_dump ($genre['id']); 
-                 
+                $genre = $stmt->fetch();
+                //var_dump($genre['id']);
+             
+                $db = db_connect();
                 $stmt = $db->prepare('SELECT * FROM `imdb_movie_has_genre` JOIN `imdb_movie` ON `imdb_movie_has_genre`.`imdb_movie_id` = `imdb_movie` . `imdb_id` WHERE `imdb_movie_has_genre`. `imdb_genre_id` = ? ');
-                $stmt->execute([$idgenre]);
+                $stmt->execute([$genre['id']]);
                 $genres = $stmt->fetchAll();
-                var_dump($genres);
+                //var_dump($genres);
             }
 ?>
 
@@ -43,13 +44,30 @@ if ($_POST['year']) {
 </head>
 <body>
    <div id="screen" class="container text-center"  style="width:75%">
-    <?php foreach ($infos as $info) : ?>
-        <p> <a href="moviedetail.php?id=<?php echo $info ['imdb_id']?>"><?php echo $info ['name'];?></a></p>
-    <?php endforeach ; ?>
-    <?php foreach ($years as $year) : ?>
-        <p> <a href="moviedetail.php?id=<?php echo $year ['imdb_id']?>"><?php echo $year ['year'] ?> <?php echo $year ['name'];?></a></p>
-    <?php endforeach ; ?>
-</div> 
 
+    <?php
+        if (isset($infos)) {
+            foreach ($infos as $info) {
+                echo '<p> <a href=moviedetail.php?id='.$info ['imdb_id'].'">' .$info ['name']. '</a></p>';
+        }
+    };
+?>
+    <?php 
+        if (isset($years)) {
+             foreach ($years as $year) {
+                echo '<p> <a href="moviedetail.php?id='.$year ['imdb_id'].'"> ' .$year ['year']. '... ' .$year ['name']. '</a></p>';
+        }
+    };
+?>
+ <?php 
+        if (isset($genres)) {
+             foreach ($genres as $genre) {
+                echo '<p> <a href="moviedetail.php?id='.$genre ['imdb_id']. '">' .$genre['name']. '</p>';
+        }
+    };
+?>
+
+
+    </div> 
 </body>
 </html>
