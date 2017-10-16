@@ -6,22 +6,27 @@ body {
     height: auto;
     text-align: center;
     margin: auto;
-
 }
 
 #screen {
-    border: 2px solid red;
     text-align: center;
     color: black;
-    margin-top: 150px;
+    margin: 0 auto;
+    margin-top: 100px;
+    font-family: cursive;
 }
 #screen h1 {
     font-size: 4em;
 }
+
 #screen p {
     font-size: 2em;
 }
+
 .movies {
     margin-top: 150px;
     font-size: 2em;
+}
+.collapse {
+    display: none;
 }

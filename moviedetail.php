@@ -2,15 +2,20 @@
 
 require_once 'db.php';
 
-if ($_POST) {
+var_dump($_GET['name']);
+
+if ($_GET) {
     
             $db = db_connect();
-            $stmt = $db->prepare("SELECT * FROM imdb_movie WHERE name = ? ");
-            $stmt->execute([$_POST['name']]);
+            $stmt = $db->prepare("SELECT * FROM imdb_movie WHERE imdb_id = ? ");
+            $stmt->execute([$_GET['id']]);
             $info = $stmt->fetch();
-            echo $info ['name'];
+          /*  echo $info ['name'];
             echo $info ['year'];
-            $info['imdb_id'];
+            $info['imdb_id']; */
+            var_dump($info);
+
+            
  }
  //genre
            /* $db = db_connect();
@@ -99,7 +104,7 @@ if ($_POST) {
 <body>
 
 <div class="movies">
-        <?php if(isset ($info ['name'])) { echo '<p> Movie name: ' .$info ['name'];}; ?>
+        <?php if(isset ($info ['name'])) { echo '<p> Movie name: </p>' . '<h3>' .$info ['name']. '</h3>' ;}; ?>
         <?php if(isset ($info ['year'])) { echo '<p> Movie year: ' .$info ['year'];}; ?>
         <?php if(isset ($genre['name'])) { echo '<p> Movie genre: ' .$genre['name'];}; ?>
         <?php if(isset ($fullname['fullname'])) { echo '<p> Movie actor: ' .$fullname['fullname']. ' as ' .$name['description'] ;}; ?>
