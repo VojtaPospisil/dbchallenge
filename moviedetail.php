@@ -91,8 +91,8 @@ if ($_GET) {
 </head>
 <body>
 
-<div class="movies">
-        <?php if(isset ($info ['name'])) { echo '<p> Movie name: </p>' . '<h3>' .$info ['name']. '</h3>' ;}; ?>
+<div id="screen">
+        <?php if(isset ($info ['name'])) { echo '<p> Movie name: </p>' . '<h1>' .$info ['name']. '</h1>' ;}; ?>
         <?php if(isset ($info ['year'])) { echo '<p> Movie year: ' .$info ['year'];}; ?>
         <?php if(isset ($genre['name'])) { echo '<p> Movie genre: ' .$genre['name'];}; ?>
         <?php if(isset ($fullname['fullname'])) { echo '<p> Movie actor: ' .$fullname['fullname']. ' as ' .$name['description'] ;}; ?>

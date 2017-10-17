@@ -14,32 +14,28 @@
 <body>
 
 
-    <div id="screen" style="width:75%">
-        <h1>Find a movie</h1>
+    <div id="screen" style="width:70%">
+        <h1 class="mb-5">Find a movie</h1>
+        <div class="container">
+            <div class="row">
+                <button class="btn1 col-4 ">Search by name</button>
+                <button class="btn2 col-4 ">Search by year</button>
+                <button class="btn3 col-4 ">Search by genre</button>
+            </div>
+        </div>
+
         <form action="workout.php" method="post">
             <div class="container">
                 <div class="row">
 
                     <div class="col-4">
-                        <p id="name">Search by name</p>
-                        <br>
-                        <div id="search_name">
-                            <input type="text" name="name">
-                        </div>
+                        <input class="name collapse m-4" type="text" name="name">
                     </div>
                     <div class="col-4">
-                        <button id="year">Search by year</button>
-                        <br>
-                        <div>
-                            <input type="text" name="year">
-                        </div>
+                        <input class="year collapse m-4" type="text" name="year">
                     </div>
                     <div class="col-4">
-                        <button id="genre">Sear by genre</button>
-                        <br>
-                        <div>
-                            <input type="text" name="genre">
-                        </div>
+                        <input class="genre collapse m-4" type="text" name="genre">
                     </div>
                 </div>
             </div>
@@ -48,24 +44,25 @@
         </form>
 
 
-        <button id="#id">Button</button>
-        <div id="column" class="collapse"> <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi dignissimos incidunt est commodi, dicta temporibus,
-            minima accusamus distinctio dolore cum atque consequuntur quo laudantium alias repellendus at numquam eaque quisquam?</p></div>
-
-
-
-
-
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
 
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
 
 
-                $("#id").click(function(){
-                    $("#column").toggleClass('collapse');
+                $(".btn1").click(function () {
+                    $(".name").toggleClass('collapse');
                 });
+
+                $(".btn2").click(function () {
+                    $(".year").toggleClass('collapse');
+                });
+
+                $(".btn3").click(function () {
+                    $(".genre").toggleClass('collapse');
+                });
+
             });
         </script>
 
