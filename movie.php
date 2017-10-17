@@ -1,6 +1,7 @@
 <?php
 require_once 'db.php';
 
+
 if (!empty($_POST['name'])) {
 
             $db = db_connect();
@@ -31,6 +32,7 @@ if (!empty($_POST['genre'])) {
                 $genres = $stmt->fetchAll();
                 //var_dump($genres);
             }
+
 ?>
 
 <!DOCTYPE html>
@@ -69,5 +71,8 @@ if (!empty($_POST['genre'])) {
 
 
     </div> 
+
+    <a href="index.html">Another search</a>
+    
 </body>
 </html>
